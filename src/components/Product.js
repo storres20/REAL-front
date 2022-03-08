@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductDataService from "../services/ProductService";
+import {Link} from 'react-router-dom';
+
 
 const Product = props => {
   const initialProductState = {
@@ -130,11 +132,19 @@ const Product = props => {
 
           <button
             type="submit"
-            className="badge badge-success"
+            className="badge badge-success mr-2"
             onClick={updateProduct}
           >
             Update
           </button>
+          
+          <Link
+            to={"/"}
+            className="badge badge-danger"
+          >
+            Go Back
+          </Link>
+          
           <p>{message}</p>
         </div>
       ) : (

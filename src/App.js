@@ -6,6 +6,8 @@ import "./App.css";
 import AddProduct from "./components/AddProduct";
 import Product from "./components/Product";
 import ProductsList from "./components/ProductsList";
+import ProductsCard from './components/ProductsCard';
+
 
 import logo from './logo.png';
 import {StyledNav} from './styles/Header/StyledNav';
@@ -31,6 +33,11 @@ function App() {
               Add
             </StyledLink>
           </li>
+          <li className="nav-item">
+            <StyledLink to={"/card"}>
+              Card
+            </StyledLink>
+          </li>
         </div>
       </StyledNav>
 
@@ -38,6 +45,7 @@ function App() {
         <Switch>
           <Route exact path={["/", "/products"]} component={ProductsList} />
           <Route exact path="/add" component={AddProduct} />
+          <Route exact path="/card" component={ProductsCard} />
           <Route path="/products/:id" component={Product} />
         </Switch>
       </div>
