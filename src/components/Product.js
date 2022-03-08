@@ -33,23 +33,6 @@ const Product = props => {
     setCurrentProduct({ ...currentProduct, [name]: value });
   };
 
-  const updatePublished = status => {
-    var data = {
-      id: currentProduct.id,
-      title: currentProduct.title,
-      description: currentProduct.description,
-      published: status
-    };
-
-    ProductDataService.update(currentProduct.id, data)
-      .then(response => {
-        setCurrentProduct({ ...currentProduct, published: status });
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
 
   const updateProduct = () => {
     ProductDataService.update(currentProduct.id, currentProduct)
@@ -102,45 +85,24 @@ const Product = props => {
               />
             </div>
 
-            <div className="form-group">
-              <label>
-                <strong>Status:</strong>
-              </label>
-              {currentProduct.published ? "Published" : "Pending"}
-            </div>
           </form>
 
-          {currentProduct.published ? (
-            <button
-              className="badge badge-primary mr-2"
-              onClick={() => updatePublished(false)}
-            >
-              UnPublish
-            </button>
-          ) : (
-            <button
-              className="badge badge-primary mr-2"
-              onClick={() => updatePublished(true)}
-            >
-              Publish
-            </button>
-          )}
 
-          <button className="badge badge-danger mr-2" onClick={deleteProduct}>
+          <button className="btn btn-danger mr-2" onClick={deleteProduct}>
             Delete
           </button>
 
           <button
             type="submit"
-            className="badge badge-success mr-2"
+            className="btn btn-success mr-2"
             onClick={updateProduct}
           >
             Update
           </button>
           
           <Link
-            to={"/"}
-            className="badge badge-danger"
+            to={"/products"}
+            className="btn btn-danger"
           >
             Go Back
           </Link>

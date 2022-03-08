@@ -30,27 +30,12 @@ const ProductsList = () => {
       });
   };
 
-  const refreshList = () => {
-    retrieveProducts();
-    setCurrentProduct(null);
-    setCurrentIndex(-1);
-  };
 
   const setActiveProduct = (product, index) => {
     setCurrentProduct(product);
     setCurrentIndex(index);
   };
 
-  const removeAllProducts = () => {
-    ProductDataService.removeAll()
-      .then(response => {
-        console.log(response.data);
-        refreshList();
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
 
   const findByTitle = () => {
     ProductDataService.findByTitle(searchTitle)
@@ -66,6 +51,7 @@ const ProductsList = () => {
   return (
     <div className="list row">
       <div className="col-md-8">
+      <Link to={"/add"}><button className="btn btn-success mb-3">Add new</button></Link>
         <div className="input-group mb-3">
           <input
             type="text"
@@ -103,12 +89,7 @@ const ProductsList = () => {
             ))}
         </ul>
 
-        <button
-          className="m-3 btn btn-sm btn-danger"
-          onClick={removeAllProducts}
-        >
-          Remove All
-        </button>
+        
       </div>
       <div className="col-md-6">
         {currentProduct ? (
@@ -127,16 +108,10 @@ const ProductsList = () => {
               </label>{" "}
               {currentProduct.description}
             </div>
-            <div>
-              <label>
-                <strong>Status:</strong>
-              </label>{" "}
-              {currentProduct.published ? "Published" : "Pending"}
-            </div>
 
             <Link
               to={"/products/" + currentProduct.id}
-              className="badge badge-warning"
+              className="btn btn-warning"
             >
               Edit
             </Link>

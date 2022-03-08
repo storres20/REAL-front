@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ProductDataService from "../services/ProductService";
+import {Link} from 'react-router-dom';
+
 
 const AddProduct = () => {
   const initialProductState = {
@@ -48,9 +50,15 @@ const AddProduct = () => {
       {submitted ? (
         <div>
           <h4>You submitted successfully!</h4>
-          <button className="btn btn-success" onClick={newProduct}>
+          <button className="btn btn-success mr-3" onClick={newProduct}>
             Add
           </button>
+          <Link
+            to={"/products"}
+            className="btn btn-danger"
+          >
+            Go Back
+          </Link>
         </div>
       ) : (
         <div>
@@ -80,9 +88,15 @@ const AddProduct = () => {
             />
           </div>
 
-          <button onClick={saveProduct} className="btn btn-success">
+          <button onClick={saveProduct} className="btn btn-success mr-3">
             Submit
           </button>
+          <Link
+            to={"/products"}
+            className="btn btn-danger"
+          >
+            Go Back
+          </Link>
         </div>
       )}
     </div>
