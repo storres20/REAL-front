@@ -7,26 +7,32 @@ import AddProduct from "./components/AddProduct";
 import Product from "./components/Product";
 import ProductsList from "./components/ProductsList";
 
+import logo from './logo.png';
+import {StyledNav} from './styles/Header/StyledNav';
+import {StyledLink} from './styles/Header/StyledLink';
+import {StyledLogo} from './styles/Header/StyledLogo';
+
+
 function App() {
   return (
     <div>
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <a href="/products" className="navbar-brand">
-          CRUD
-        </a>
+      <StyledNav className="navbar navbar-expand navbar-dark ">
+        <Link to={"/products"}>
+          <StyledLogo src={logo} alt="logo" width={'60px'} />
+        </Link>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link to={"/products"} className="nav-link">
+            <StyledLink to={"/products"}>
               Products
-            </Link>
+            </StyledLink>
           </li>
           <li className="nav-item">
-            <Link to={"/add"} className="nav-link">
+            <StyledLink to={"/add"}>
               Add
-            </Link>
+            </StyledLink>
           </li>
         </div>
-      </nav>
+      </StyledNav>
 
       <div className="container mt-3">
         <Switch>
