@@ -51,8 +51,10 @@ Tecnologias utilizadas
 
 | `🔭Frontend` | `⚡Backend` | `📫Database` |
 | ------ | ------ | ------ | 
-| HTML | |  |
-| CSS |  |  |
+| React js | |  |
+| Bootstrap |  |  |
+| Styled-components |  |  |
+| react-router-dom |  |  |
 
 
 ## 🌱 Beta version
