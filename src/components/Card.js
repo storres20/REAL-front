@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import ProductDataService from "../services/ProductService";
 import { Link } from 'react-router-dom';
 
-import {StyledCont} from '../styles/Card/StyledCont';
-import {StyledImg} from '../styles/Card/StyledImg';
-import {StyledDiv} from '../styles/Card/StyledDiv';
-import {StyledP} from '../styles/Card/StyledP';
+import {StyledCont, StyledImg, StyledDiv, StyledP} from '../styles/Card/StyledCard';
 
 
 import noimage from '../noimage.png';
@@ -44,6 +41,8 @@ const Product = props => {
         <StyledDiv>
           <StyledP><strong>Title:</strong> {currentProduct.title}</StyledP>
           <p><strong>Description:</strong> {currentProduct.description}</p>
+          <p><strong>Warranty:</strong> {currentProduct.warranty}</p>
+          <p><strong>Price:</strong> {currentProduct.price}</p>
           <Link
             to={"/"}
             className="btn btn-danger"

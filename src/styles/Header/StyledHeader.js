@@ -14,4 +14,18 @@ margin-right: 20px;
   border-bottom: 2px solid ${paleteOfColors.whitehover};
 }
 
-`
+`;
+
+export const StyledLogo = styled.img`
+
+color: ${paleteOfColors.white};
+margin-right: 60px;
+margin-left: 20px;
+
+`;
+
+export const StyledNav = styled.nav`
+
+background: ${paleteOfColors.realPurple};
+
+`;

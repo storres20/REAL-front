@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ProductDataService from "../services/ProductService";
 import { Link } from "react-router-dom";
-import { StyledUl } from '../styles/ProductsCard/StyledUl';
-import { StyledLi } from '../styles/ProductsCard/StyledLi';
-import { StyledImg } from '../styles/ProductsCard/StyledImg';
+
+import { StyledUl, StyledLi, StyledImg } from '../styles/ProductsCard/StyledProductsCard';
 
 
 import noimage from '../noimage.png';
