@@ -2,9 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 import logo from '../logo.png';
-import { StyledNav } from '../styles/Header/StyledNav';
-import { StyledLink } from '../styles/Header/StyledLink';
-import { StyledLogo } from '../styles/Header/StyledLogo';
+
+import { StyledNav, StyledLink, StyledLogo } from '../styles/Header/StyledHeader';
 
 export default function Header() {
   return (
