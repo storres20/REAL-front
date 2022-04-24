@@ -60,7 +60,7 @@ Tecnologias utilizadas
 ## 🌱 Beta version
 Pagina web
 <ul>
-<li> <a href="https://crudreal.netlify.app/products" target="_blank">https://crudreal.netlify.app/products</a> </li>
+<li> <a href="https://crudreal.netlify.app/" target="_blank">https://crudreal.netlify.app/</a> </li>
 </ul>
 
 ## 🎨 Maquetado - Figma
