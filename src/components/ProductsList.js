@@ -108,6 +108,30 @@ const ProductsList = () => {
               </label>{" "}
               {currentProduct.description}
             </div>
+            <div>
+              <label>
+                <strong>Model:</strong>
+              </label>{" "}
+              {currentProduct.model}
+            </div>
+            <div>
+              <label>
+                <strong>Quantity:</strong>
+              </label>{" "}
+              {currentProduct.quantity}
+            </div>
+            <div>
+              <label>
+                <strong>Warranty:</strong>
+              </label>{" "}
+              {currentProduct.warranty}
+            </div>
+            <div>
+              <label>
+                <strong>Price: </strong>$
+              </label>{" "}
+              {currentProduct.price}
+            </div>
 
             <Link
               to={"/products/" + currentProduct.id}
