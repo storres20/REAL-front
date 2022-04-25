@@ -6,8 +6,6 @@ import noimage from '../noimage.png';
 
 const ProductsList = () => {
   const [products, setProducts] = useState([]);
-  const [currentProduct, setCurrentProduct] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchTitle, setSearchTitle] = useState("");
 
   useEffect(() => {
@@ -31,12 +29,6 @@ const ProductsList = () => {
   };
 
 
-  const setActiveProduct = (product, index) => {
-    setCurrentProduct(product);
-    setCurrentIndex(index);
-  };
-
-
   const findByTitle = () => {
     ProductDataService.findByTitle(searchTitle)
       .then(response => {
@@ -48,8 +40,11 @@ const ProductsList = () => {
       });
   };
   
-  const deleteProduct = () => {
-    ProductDataService.remove(currentProduct.id)
+  
+  const deleteProduct2 = (id) => {
+  
+    if (window.confirm("Do you want to DELETE ?") === true) {
+      ProductDataService.remove(id)
       .then(response => {
         console.log(response.data);
         window.location.reload(false);
@@ -57,10 +52,12 @@ const ProductsList = () => {
       .catch(e => {
         console.log(e);
       });
+    }
+    
   };
 
   return (
-    <div className="list row">
+    <div className="">
       <div className="col-md-8">
       <Link to={"/add"}><button className="btn btn-success mb-3">Add new</button></Link>
         <div className="input-group mb-3">
@@ -82,87 +79,53 @@ const ProductsList = () => {
           </div>
         </div>
       </div>
-      <div className="col-md-6">
-        <h4>Products List</h4>
-
-        <ul className="list-group">
-          {products &&
-            products.map((product, index) => (
-              <li
-                className={
-                  "list-group-item " + (index === currentIndex ? "active" : "")
-                }
-                onClick={() => setActiveProduct(product, index)}
-                key={index}
-              >
-                {product.title}
-              </li>
-            ))}
-        </ul>
-
-        
-      </div>
-      <div className="col-md-6">
-        {currentProduct ? (
-          <div>
-            <h4>Product</h4>
-            <img src={(currentProduct.image === null) ? (noimage) : (currentProduct.image) } alt={currentProduct.title} width={'200px'} />
-            <div>
-              <label>
-                <strong>Title:</strong>
-              </label>{" "}
-              {currentProduct.title}
-            </div>
-            <div>
-              <label>
-                <strong>Description:</strong>
-              </label>{" "}
-              {currentProduct.description}
-            </div>
-            <div>
-              <label>
-                <strong>Model:</strong>
-              </label>{" "}
-              {currentProduct.model}
-            </div>
-            <div>
-              <label>
-                <strong>Quantity:</strong>
-              </label>{" "}
-              {currentProduct.quantity}
-            </div>
-            <div>
-              <label>
-                <strong>Warranty:</strong>
-              </label>{" "}
-              {currentProduct.warranty}
-            </div>
-            <div>
-              <label>
-                <strong>Price: </strong>$
-              </label>{" "}
-              {currentProduct.price}
-            </div>
-
-            <Link
-              to={"/products/" + currentProduct.id}
-              className="btn btn-warning"
-            >
-              Edit
-            </Link>
+      
+      <table className="table table-hover table-striped table-responsive text-center">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">Model</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Warranty</th>
+              <th scope="col">Price</th>
+              <th scope="col">Image</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
             
-            <button className="btn btn-danger ml-2" onClick={deleteProduct}>
-              Delete
-            </button>
-          
-          </div>
-        ) : (
-          <div>
-            <br />
-            <p>Please click on a Product...</p>
-          </div>
-        )}
-      </div>
+            {products &&
+              products.map((product, index) => (
+                <tr key={index}>
+                  <th scope="row" className="align-middle">{index+1}</th>
+                  <td className="align-middle">{product.title}</td>
+                  <td className="align-middle">{product.description}</td>
+                  <td className="align-middle">{product.model}</td>
+                  <td className="align-middle">{product.quantity}</td>
+                  <td className="align-middle">{product.warranty}</td>
+                  <td className="align-middle">{product.price}</td>
+                  <td><img src={(product.image === null) ? (noimage) : (product.image) } alt={product.title} width={100} /></td>
+                  <td className="align-middle">
+                    <Link
+                      to={`products/${product.id}`}
+                      className="btn btn-warning"
+                    >
+                      Edit
+                    </Link>
+                    <button className="btn btn-danger ml-2" onClick={() => deleteProduct2(`${product.id}`)}>
+                      Delete
+                    </button>
+                  </td>
+                  
+                </tr>
+              ))}
+            
+          </tbody>
+        </table>
+      
+      
     </div>
   );
 };
