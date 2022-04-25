@@ -47,6 +47,17 @@ const ProductsList = () => {
         console.log(e);
       });
   };
+  
+  const deleteProduct = () => {
+    ProductDataService.remove(currentProduct.id)
+      .then(response => {
+        console.log(response.data);
+        window.location.reload(false);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
 
   return (
     <div className="list row">
@@ -139,6 +150,11 @@ const ProductsList = () => {
             >
               Edit
             </Link>
+            
+            <button className="btn btn-danger ml-2" onClick={deleteProduct}>
+              Delete
+            </button>
+          
           </div>
         ) : (
           <div>
