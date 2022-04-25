@@ -8,6 +8,10 @@ const Product = props => {
     id: null,
     title: "",
     description: "",
+    model: "",
+    quantity: "",
+    warranty: "",
+    price: "",
     published: false
   };
   const [currentProduct, setCurrentProduct] = useState(initialProductState);
@@ -35,6 +39,7 @@ const Product = props => {
 
 
   const updateProduct = () => {
+    console.log(currentProduct);
     ProductDataService.update(currentProduct.id, currentProduct)
       .then(response => {
         console.log(response.data);
@@ -81,6 +86,50 @@ const Product = props => {
                 id="description"
                 name="description"
                 value={currentProduct.description}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="model">Model</label>
+              <input
+                type="text"
+                className="form-control"
+                id="model"
+                name="model"
+                value={currentProduct.model}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="quantity">Quantity</label>
+              <input
+                type="text"
+                className="form-control"
+                id="quantity"
+                name="quantity"
+                value={currentProduct.quantity}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="warranty">Warranty</label>
+              <input
+                type="text"
+                className="form-control"
+                id="warranty"
+                name="warranty"
+                value={currentProduct.warranty}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="price">Price</label>
+              <input
+                type="text"
+                className="form-control"
+                id="price"
+                name="price"
+                value={currentProduct.price}
                 onChange={handleInputChange}
               />
             </div>
