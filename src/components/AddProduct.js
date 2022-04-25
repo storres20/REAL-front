@@ -8,6 +8,10 @@ const AddProduct = () => {
     id: null,
     title: "",
     description: "",
+    model: "",
+    quantity: "",
+    warranty: "",
+    price: "",
     published: false
   };
   const [product, setProduct] = useState(initialProductState);
@@ -19,9 +23,17 @@ const AddProduct = () => {
   };
 
   const saveProduct = () => {
+  
+    if (product.title && product.description && product.model && product.quantity && product.warranty && product.price) {
+    
     var data = {
       title: product.title,
-      description: product.description
+      description: product.description,
+      model: product.model,
+      quantity: product.quantity,
+      warranty: product.warranty,
+      price: product.price,
+      published: product.published,
     };
 
     ProductDataService.create(data)
@@ -30,6 +42,10 @@ const AddProduct = () => {
           id: response.data.id,
           title: response.data.title,
           description: response.data.description,
+          model: response.data.model,
+          quantity: response.data.quantity,
+          warranty: response.data.warranty,
+          price: response.data.price,
           published: response.data.published
         });
         setSubmitted(true);
@@ -38,6 +54,10 @@ const AddProduct = () => {
       .catch(e => {
         console.log(e);
       });
+      
+    }else {
+      alert("Faltan Datos")
+    }
   };
 
   const newProduct = () => {
@@ -68,7 +88,7 @@ const AddProduct = () => {
               type="text"
               className="form-control"
               id="title"
-              required
+              required={true}
               value={product.title}
               onChange={handleInputChange}
               name="title"
@@ -81,10 +101,62 @@ const AddProduct = () => {
               type="text"
               className="form-control"
               id="description"
-              required
+              required={true}
               value={product.description}
               onChange={handleInputChange}
               name="description"
+            />
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="model">Model</label>
+            <input
+              type="text"
+              className="form-control"
+              id="model"
+              required={true}
+              value={product.model}
+              onChange={handleInputChange}
+              name="model"
+            />
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="quantity">Quantity</label>
+            <input
+              type="text"
+              className="form-control"
+              id="quantity"
+              required={true}
+              value={product.quantity}
+              onChange={handleInputChange}
+              name="quantity"
+            />
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="warranty">Warranty</label>
+            <input
+              type="text"
+              className="form-control"
+              id="warranty"
+              required={true}
+              value={product.warranty}
+              onChange={handleInputChange}
+              name="warranty"
+            />
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="price">Price</label>
+            <input
+              type="text"
+              className="form-control"
+              id="price"
+              required={true}
+              value={product.price}
+              onChange={handleInputChange}
+              name="price"
             />
           </div>
 
