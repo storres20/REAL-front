@@ -57,15 +57,10 @@ Tecnologias utilizadas
 | react-router-dom |  |  |
 
 
-## 🌱 Beta version
-Pagina web
+### 💻Pagina web: 📱
 <ul>
-<li> <a href="https://crudreal.netlify.app/" target="_blank">https://crudreal.netlify.app/</a> </li>
-</ul>
-
-## 🎨 Maquetado - Figma
-<ul>
-<li> Coming Soon </li>
+<li> Frontend: <a href="https://real-front.netlify.app/" target="_blank">https://real-front.netlify.app/</a> </li>
+<li> Backend: <a href="https://real-back.vercel.app/api/products" target="_blank">https://real-back.vercel.app/api/products</a> </li>
 </ul>
 
 
