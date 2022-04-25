@@ -1,6 +1,7 @@
 
-<h1 align="center">CRUD</h1>
-<p align="center"><img src="https://user-images.githubusercontent.com/81504385/157373412-4540e121-6a09-4f33-b0ad-1471b1f28b2b.png"/></p> 
+<h1 align="center">REAL - Frontend</h1>
+<p align="center"><img src="https://user-images.githubusercontent.com/81504385/165046537-2c97fc97-da4a-4b7f-ac00-30f3514a8ce2.png"/></p> 
+
 
 ## Tabla de contenidos:
 ---
@@ -14,13 +15,22 @@
 ## Descripción y contexto
 ---
 
-> "Single Page Application" para Empresa que comercializa electrodomesticos
+🛍 🛒 **REAL - Frontend** 🛍 🛒 es una tienda online de productos diversos. 🛒🛒🛒
+
+Es una plataforma web, enfocada para los clientes; con la finalidad de brindarles una herramienta que facilite la busqueda de productos diversos a adquirir.
+
+Además, permite la creación de nuevos productos y adjuntar una imagen.
+
+Constará con vista para celulares y para computadoras de escritorio.
+
+Puede ser accedido a traves de: <a href="https://real-front.netlify.app/" target="_blank">https://real-front.netlify.app/</a>
 
 ## Guía de usuario
 ---
 Elaborada para mostrar catalogo de productos, titulo, descripcion. Presenta la opcion de CRUD para agregar nuevos productos
 
-![image](https://user-images.githubusercontent.com/81504385/157373809-fb624a4a-b9f8-4464-a0c8-64b2a439945d.png)
+![image](https://user-images.githubusercontent.com/81504385/165046723-d76d09e6-116c-49c9-bdf0-bcac6e98da87.png)
+
 
  	
 ## Guía de instalación
