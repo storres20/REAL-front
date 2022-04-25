@@ -106,7 +106,7 @@ const ProductsList = () => {
                   <td className="align-middle">{product.quantity}</td>
                   <td className="align-middle">{product.warranty}</td>
                   <td className="align-middle">{product.price}</td>
-                  <td><img src={(product.image === null) ? (noimage) : (product.image) } alt={product.title} width={100} /></td>
+                  <td><img src={(product.image === null || product.image === "") ? (noimage) : (product.image) } alt={product.title} width={100} /></td>
                   <td className="align-middle">
                     <Link
                       to={`products/${product.id}`}
