@@ -13,6 +13,9 @@ const Product = props => {
     id: null,
     title: "",
     description: "",
+    model: "",
+    quantity: "",
+    prince: "",
     published: false
   };
   const [currentProduct, setCurrentProduct] = useState(initialProductState);
@@ -41,8 +44,10 @@ const Product = props => {
         <StyledDiv>
           <StyledP><strong>Title:</strong> {currentProduct.title}</StyledP>
           <p><strong>Description:</strong> {currentProduct.description}</p>
+          <p><strong>Model:</strong> {currentProduct.model}</p>
+          <p><strong>Quantity:</strong> {currentProduct.quantity}</p>
           <p><strong>Warranty:</strong> {currentProduct.warranty}</p>
-          <p><strong>Price:</strong> {currentProduct.price}</p>
+          <p><strong>Price: </strong>$ {currentProduct.price}</p>
           <Link
             to={"/"}
             className="btn btn-danger"
