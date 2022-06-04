@@ -86,7 +86,7 @@ const ProductsList = () => {
                 <Link to={"/card/" + product.id}>
                   <StyledImg
                     width={200}
-                    src={(product.image === null) ? (noimage) : (product.image)}
+                    src={(product.image === null || product.image === "") ? (noimage) : (product.image) }
                     alt={product.title}
                   />
                 </Link>
