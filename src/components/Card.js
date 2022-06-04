@@ -40,7 +40,7 @@ const Product = props => {
     <div>
 
       <StyledCont>
-        <StyledImg src={(currentProduct.image === null) ? (noimage) : (currentProduct.image)} alt={currentProduct.title} />
+        <StyledImg src={(currentProduct.image === null || currentProduct.image === "") ? (noimage) : (currentProduct.image)} alt={currentProduct.title} />
         <StyledDiv>
           <StyledP><strong>Title:</strong> {currentProduct.title}</StyledP>
           <p><strong>Description:</strong> {currentProduct.description}</p>
