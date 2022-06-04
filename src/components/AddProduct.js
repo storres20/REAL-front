@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ProductDataService from "../services/ProductService";
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 
 import FileBase from 'react-file-base64';
 import axios from "axios";
@@ -96,7 +96,7 @@ const AddProduct = () => {
   }
   
   //******************** */
-
+  const history = useHistory();
 
   const saveProduct = () => {
   
@@ -128,6 +128,7 @@ const AddProduct = () => {
         });
         setSubmitted(true);
         console.log(response.data);
+        history.push("/products");
       })
       .catch(e => {
         console.log(e);
@@ -160,6 +161,7 @@ const AddProduct = () => {
         </div>
       ) : (
         <div>
+          <h4>New Product</h4>
           <div className="form-group">
             <label htmlFor="title">Title</label>
             <input
