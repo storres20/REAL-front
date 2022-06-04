@@ -21,7 +21,6 @@ const AddProduct = () => {
   };
   
   const [product, setProduct] = useState(initialProductState);
-  const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = event => {
     const { name, value } = event.target;
@@ -126,7 +125,6 @@ const AddProduct = () => {
           image: response.data.image,
           published: response.data.published
         });
-        setSubmitted(true);
         console.log(response.data);
         history.push("/products");
       })
@@ -139,27 +137,10 @@ const AddProduct = () => {
     }
   };
 
-  const newProduct = () => {
-    setProduct(initialProductState);
-    setSubmitted(false);
-  };
+  
 
   return (
     <div className="submit-form">
-      {submitted ? (
-        <div>
-          <h4>You submitted successfully!</h4>
-          <button className="btn btn-success mr-3" onClick={newProduct}>
-            Add
-          </button>
-          <Link
-            to={"/products"}
-            className="btn btn-danger"
-          >
-            Go Back
-          </Link>
-        </div>
-      ) : (
         <div>
           <h4>New Product</h4>
           <div className="form-group">
@@ -261,7 +242,7 @@ const AddProduct = () => {
             Go Back
           </Link>
         </div>
-      )}
+      
     </div>
   );
 };
