@@ -47,7 +47,7 @@ const ProductsList = () => {
       ProductDataService.remove(id)
       .then(response => {
         console.log(response.data);
-        window.location.reload(false);
+        window.location.reload(true);
       })
       .catch(e => {
         console.log(e);
