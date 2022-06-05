@@ -25,6 +25,7 @@ function App() {
           {/* <Route exact path="/card" component={ProductsCard} /> */}
           <Route path="/products/:id" component={Product} />
           <Route path="/card/:id" component={Card} />
+          <Route exact path="*" component={ProductsCard} />
         </Switch>
       </div>
     </div>
