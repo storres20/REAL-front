@@ -7,22 +7,20 @@ import '../loading.css'
 
 const ProductsList = () => {
   const [products, setProducts] = useState([]);
-  const [searchTitle, setSearchTitle] = useState("");
+  const [allData, setAllData] = useState([]);
   const [loading, setLoading] = useState(false) // loading
+  const [noData, setNoData] = useState(false) // no data
 
   useEffect(() => {
     retrieveProducts();
   }, []);
 
-  const onChangeSearchTitle = e => {
-    const searchTitle = e.target.value;
-    setSearchTitle(searchTitle);
-  };
 
   const retrieveProducts = () => {
     ProductDataService.getAll()
       .then(response => {
         setProducts(response.data);
+        setAllData(response.data)
         console.log(response.data);
         setLoading(true) // loading
       })
@@ -32,18 +30,6 @@ const ProductsList = () => {
       });
   };
 
-
-  const findByTitle = () => {
-    ProductDataService.findByTitle(searchTitle)
-      .then(response => {
-        setProducts(response.data);
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-  
   
   const deleteProduct2 = (id) => {
   
@@ -59,28 +45,45 @@ const ProductsList = () => {
     }
     
   };
+  
+  
+  const handleSearch = (event) => {
+    const keyword = event.target.value;
+
+    if (keyword !== '') {
+      const results = allData.filter((user) => {
+        //return user.title.toLowerCase().startsWith(keyword.toLowerCase());
+        return user.title.toLowerCase().includes(keyword.toLowerCase());
+        // Use the toLowerCase() method to make it case-insensitive
+      });
+
+      setProducts(results);
+      
+      // NoData
+      if (results.length === 0) {
+        setNoData(true)
+      }
+      else setNoData(false)
+
+    } else {
+      setProducts(allData);
+      // If the text field is empty, show all users
+    }
+
+  }
 
   return (
     <div className="">
-      <div className="col-md-8">
       <Link to={"/add"}><button className="btn btn-success mb-3">Add new</button></Link>
+      <div className="col-md-8">
+        <label className="form-label">Search bar:</label>
         <div className="input-group mb-3">
           <input
             type="text"
             className="form-control"
             placeholder="Search by product's title"
-            value={searchTitle}
-            onChange={onChangeSearchTitle}
+            onChange={event => handleSearch(event)}
           />
-          <div className="input-group-append">
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={findByTitle}
-            >
-              Search
-            </button>
-          </div>
         </div>
       </div>
       
@@ -139,7 +142,9 @@ const ProductsList = () => {
       
       )}
       
-      
+      {noData ? (
+        <h1 className="text-center mt-5">No Data to Show...</h1>
+      ) : ("")}
       
       
     </div>
