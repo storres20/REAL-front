@@ -3,10 +3,12 @@ import ProductDataService from "../services/ProductService";
 import { Link } from "react-router-dom";
 
 import noimage from '../noimage.png';
+import '../loading.css'
 
 const ProductsList = () => {
   const [products, setProducts] = useState([]);
   const [searchTitle, setSearchTitle] = useState("");
+  const [loading, setLoading] = useState(false) // loading
 
   useEffect(() => {
     retrieveProducts();
@@ -22,9 +24,11 @@ const ProductsList = () => {
       .then(response => {
         setProducts(response.data);
         console.log(response.data);
+        setLoading(true) // loading
       })
       .catch(e => {
         console.log(e);
+        setLoading(true) // loading
       });
   };
 
@@ -80,7 +84,9 @@ const ProductsList = () => {
         </div>
       </div>
       
-      <table className="table table-hover table-striped table-responsive text-center">
+      {loading ? (
+      
+        <table className="table table-hover table-striped table-responsive text-center">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -124,6 +130,16 @@ const ProductsList = () => {
             
           </tbody>
         </table>
+      
+      ) : (
+      
+        <div className="flexLoad">
+          <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+        </div>
+      
+      )}
+      
+      
       
       
     </div>
