@@ -82,7 +82,7 @@ const ProductsList = () => {
       <h4 className="text-center">Products List</h4>
       
       {noData ? (
-        <h1 className="text-center mt-5">No Data to Show...</h1>
+        <h3 className="text-center mt-5">No Data to Show...</h3>
       ) : ("")}
       
       {loading ? (
