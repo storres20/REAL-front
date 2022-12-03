@@ -7,6 +7,7 @@ import FileBase from 'react-file-base64';
 import axios from "axios";
 
 import noimage from '../noimage.png';
+import '../loading.css'
 
 
 const Product = props => {
@@ -23,15 +24,18 @@ const Product = props => {
   };
   const [currentProduct, setCurrentProduct] = useState(initialProductState);
   /* const [message, setMessage] = useState(""); */
+  const [loading, setLoading] = useState(false) // loading
 
   const getProduct = id => {
     ProductDataService.get(id)
       .then(response => {
         setCurrentProduct(response.data);
         console.log(response.data);
+        setLoading(true) // loading
       })
       .catch(e => {
         console.log(e);
+        setLoading(true) // loading
       });
   };
 
@@ -141,7 +145,7 @@ const Product = props => {
 
   return (
     <div>
-      {currentProduct ? (
+      {loading ? (
         <div className="d-flex flex-wrap">
           <StyledImg src={(currentProduct.image === null || currentProduct.image === "") ? (noimage) : (currentProduct.image)} alt={currentProduct.title} />
           
@@ -251,9 +255,8 @@ const Product = props => {
           </div>
         </div>
       ) : (
-        <div>
-          <br />
-          <p>Please click on a Product...</p>
+        <div className="flexLoad">
+          <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
         </div>
       )}
     </div>
